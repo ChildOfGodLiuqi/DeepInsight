@@ -1,9 +1,6 @@
 
 # coding: utf-8
 
-# In[ ]:
-
-
 # 数据类型
 '''
 int 
@@ -11,29 +8,17 @@ float
 str
 '''
 
-# In[2]:
-
-
 a=3
 type(a)
 
-
-# In[3]:
-
-
 a=3.0
 type(a)
-
-
-# In[4]:
-
 
 a='I am ok'
 type(a)
 
 
-# In[18]:
-
+#----------------------------------
 
 ## 列表list   有序的可变表
 
@@ -71,9 +56,7 @@ print(list_var.index('b')) #获取知道元素索引
 print(len(list_var)) #计算列表长度
 
 
-# In[46]:
-
-
+#----------------------------------
 #  元组 tuple 有序的列表，一旦初始化就不能修改
 
 tuple_var=()      # 定义空元组
@@ -97,9 +80,7 @@ tuple_var=('a','b',('x','y'))
 print(len(tuple_var)) # 计算元素个数
 
 
-# In[69]:
-
-
+#----------------------------------
 # 字典  查询速度快，但耗费空间多，key 要求为不可变对象
 dict_var={}     # 定义空字典
 dict_var=dict()
@@ -127,9 +108,7 @@ print(dict_var.values()) #字典值集合
 print(dict_var.items())  #键值对集合
 
 
-# In[95]:
-
-
+#----------------------------------
 # 集合 类似dict，但没有value，
 set_var=set()  #定义空集合
 
@@ -166,10 +145,32 @@ print(set_var1.difference(set_var2))
 set_var1=set(['a','b','c',('a','b')]) 
 print(set_var1)
 
-
-# In[96]:
-
-
+#----------------------------------
 import re
+# 验证邮箱正则表达式
+def is_valid_email(addr):
+    if re.match(r'[A-Za-z0-9\.\_]+@[a-zA-Z]+(\.com)',addr):
+        return True
+    else:
+        return False
+    
+print(is_valid_email('someone@gmail.com'))
+print(is_valid_email('bill.gates@microsoft.com'))
+print(is_valid_email('bob#example.com'))
+print(is_valid_email('mr-bob@example.com'))
+
+# 提取邮箱名字
+def name_of_email(addr):
+    
+    name=re.match(r'<[a-zA-Z\s]+>',addr)
+    if name:
+        name=name.group(0)
+        return name[1:len(name)-1]
+    else:
+        name=re.match(r'\S+@',addr).group(0)
+        return name[:-1]
+    
+print(name_of_email('<Tom Paris> tom@voyager.org'))
+print(name_of_email('tom@voyager.org'))
 
 
