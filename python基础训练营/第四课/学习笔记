@@ -1,0 +1,135 @@
+# -* utf-8 *-
+
+import numpy as np
+
+# 数组创建
+array_var=np.array([2,5,6],dtype=np.float)  # 特定数组
+print(array_var)
+
+array_var=np.zeros((5,)) # np.zeros(5)      # 全0
+print(array_var)
+
+array_var=np.ones((2,3))                     #全1
+print(array_var)
+
+array_var=np.full((2,3,4),2)                #全2
+print(array_var)
+
+array_var=np.empty((2,3),dtype=np.int)      # 空数组
+print(array_var)
+
+array_var=np.arange(1,20,2)                 # 指定范围
+print(array_var)
+
+array_var=np.arange(10).reshape(2,5)
+print(array_var)
+
+array_var=np.linspace(1,10,20)             #开端1 结束点10 分割成20个数据
+print(array_var)
+# numpy属性
+
+'''
+ndim   维度
+shape  行和列数
+size   元素个数
+'''
+print(array_var.ndim)
+print(array_var.shape)
+print(array_var.size)
+
+
+
+# numpy  计算
+a=np.array([5,8,6,3])
+b=np.array([8,5,2,0])
+
+c_minus=a-b
+print(c_minus)
+
+c_plus=a+b
+print(c_plus)
+
+c_square=a**2
+print(c_square)
+
+c_square=np.square(a)
+print(c_square)
+
+c_mulitpy=a*b
+print(c_mulitpy)
+
+c_bool=a<6
+print(c_bool)
+
+a=np.array([[2,5,7],[3,6,9]])
+b=np.array([[1,4],[2,5],[3,6]])
+c_dot=np.dot(a,b)
+print(c_dot)
+
+print(np.sum(a))
+print(np.sum(a,axis=0)) 
+print(np.sum(a,axis=1))
+
+'''
+np.max()
+np.min()
+np.mean()
+np.median()
+
+transpose和.T  转置
+
+'''
+
+# 索引访问
+
+a=np.array([10,36,21,2,3])
+print(a[0])
+print(a[2])
+
+a=np.array([[10,36,21,2,3],[9,6,20,1,5]])
+print(a[0])  #索引第1行
+print(a[:,0]) #索引第2列
+print(a[0,2]) #索引 第一行第3列
+print(a[0,0:2]) #索引第一行第1、2列
+
+a=np.arange(0,30).reshape(5,6)
+for row in a:
+    print(row)
+
+for col in a.T:
+    print(col)
+    
+    
+# 合并和分割
+
+a=np.arange(12).reshape(3,4)
+print(a)
+
+print(np.split(a,2,axis=1))  #纵向分割
+print(np.split(a,3,axis=0))  #横向分割
+
+a=np.array([1,1,1])
+b=np.array([2,2,2])
+
+print(np.vstack((a,b)))    #纵向合并
+print(np.hstack((a,b)))    #横向合并
+
+print(a[:,np.newaxis])
+
+print(a[:,np.newaxis].shape)
+print(a.shape)
+
+print(a[:,np.newaxis].T.shape)
+print(a.T.shape)
+
+a=a[:,np.newaxis]
+b=b[:,np.newaxis]
+print(np.concatenate((a,b),axis=0))
+print(np.concatenate((a,b,b),axis=0))
+print(np.concatenate((a,b),axis=1))
+print(np.concatenate((a,b,a),axis=1))    
+
+import numpy.linalg as lg
+a=np.array([[5,6,9],[8,7,6],[3,5,8]])
+print(a.T)      #转职置
+print(lg.inv(a)) #求逆
